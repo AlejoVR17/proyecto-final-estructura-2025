@@ -1,16 +1,14 @@
 package com.syncup.controller;
 
-import com.syncup.data.DataInitializer;
-import com.syncup.data.UserRepository;
-import com.syncup.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import com.syncup.data.UserRepository;
+import com.syncup.model.User;
+import com.syncup.utils.SceneSwitcher;
 import javafx.stage.Stage;
 
 public class LoginController {
@@ -22,64 +20,76 @@ public class LoginController {
     private PasswordField txtPassword;
 
     @FXML
-    private Label lblMessage;  // ✔ Debe coincidir con el FXML
+    private Label lblMessage;
 
-    private static boolean initialized = false;
+    public void onLogin(ActionEvent event) {
 
-    @FXML
-    private void onLogin(ActionEvent event) {
+        String username = txtUsername.getText().trim();
+        String password = txtPassword.getText().trim();
 
-        // Inicializar solo una vez
-        if (!initialized) {
-            DataInitializer.init();
-            initialized = true;
+        if (username.isEmpty() || password.isEmpty()) {
+            lblMessage.setText("⚠️ Ingresa usuario y contraseña");
+            return;
         }
 
-        String username = txtUsername.getText();
-        String password = txtPassword.getText();
-
-        UserRepository repo = UserRepository.getInstance();
-        User usuario = repo.getUser(username);
-
-        // Validación
-        if (usuario != null && usuario.getPassword().equals(password)) {
-
-            lblMessage.setText("Inicio de sesión exitoso.");
-            lblMessage.setStyle("-fx-text-fill: #4CAF50;"); // verde
-
-            abrirDashboard(usuario);
-
-        } else {
-            lblMessage.setText("Credenciales incorrectas.");
-            lblMessage.setStyle("-fx-text-fill: #FF5252;"); // rojo
-        }
-    }
-
-    private void abrirDashboard(User usuario) {
         try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/com/syncup/view/UserDashboard.fxml")
-            );
+            UserRepository repo = UserRepository.getInstance();
+            User user = repo.getUser(username);
+
+            // 🔥 VALIDACIÓN GENERAL
+            if (user == null || !user.getPassword().equals(password)) {
+                lblMessage.setText("❌ Usuario o contraseña incorrectos");
+                return;
+            }
+
+            // =====================================================
+            //  ✔️ ADMIN LOGIN CORRECTO
+            // =====================================================
+            if (username.equals("admin") && password.equals("admin")) {
+
+                FXMLLoader loader =
+                        new FXMLLoader(getClass().getResource("/com/syncup/view/admin_dashboard.fxml"));
+
+                Parent root = loader.load();
+
+                Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
+
+                stage.setTitle("SyncUp - Administrador");
+                stage.setScene(scene);
+                stage.show();
+
+                return;   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< OBLIGATORIO
+            }
+
+            // =====================================================
+            //  ✔️ LOGIN USUARIO NORMAL
+            // =====================================================
+            FXMLLoader loader =
+                    new FXMLLoader(getClass().getResource("/com/syncup/view/user_dashboard.fxml"));
+
             Parent root = loader.load();
 
             UserDashboardController controller = loader.getController();
-            controller.setUsuarioActual(usuario);
+            controller.setCurrentUser(user.getUsername());
 
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+
+            scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
+            stage.setTitle("SyncUp - Usuario");
+            stage.setScene(scene);
             stage.show();
-
-            Stage currentStage = (Stage) txtUsername.getScene().getWindow();
-            currentStage.close();
 
         } catch (Exception e) {
             e.printStackTrace();
+            lblMessage.setText("⚠️ Error al cargar la interfaz.");
         }
     }
 
-    @FXML
-    private void onRegister(ActionEvent actionEvent) {
-        lblMessage.setText("Función de registro en desarrollo.");
-        lblMessage.setStyle("-fx-text-fill: #FFA000;");
+
+    public void onRegister(ActionEvent event) {
+        SceneSwitcher.switchScene(event, "/com/syncup/view/register.fxml", "SyncUp - Registro de Usuario");
     }
 }

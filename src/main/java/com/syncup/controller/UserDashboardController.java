@@ -1,6 +1,7 @@
 package com.syncup.controller;
 
 import com.syncup.data.DataInitializer;
+import com.syncup.data.UserRepository;
 import com.syncup.graph.GrafoSocial;
 import com.syncup.model.User;
 import javafx.event.ActionEvent;
@@ -15,29 +16,41 @@ public class UserDashboardController {
     private User usuarioActual;
     private GrafoSocial grafoSocial;
 
-    // ============================================================
-    //  CARGAR USUARIO
-    // ============================================================
+
+    //  CARGAR USUARIO POR OBJETO
+
     public void setUsuarioActual(User usuario) {
         this.usuarioActual = usuario;
         System.out.println("Usuario cargado en dashboard: " + usuario.getUsername());
     }
 
-    // ============================================================
+    //  CARGAR USUARIO POR USERNAME
+
+    public void setCurrentUser(String username) {
+        UserRepository repo = UserRepository.getInstance();
+        this.usuarioActual = repo.getUser(username);
+
+        if (usuarioActual != null) {
+            System.out.println("Usuario encontrado en Dashboard: " + usuarioActual.getUsername());
+        } else {
+            System.out.println("⚠️ ERROR: usuario no encontrado en UserRepository");
+        }
+    }
+
+
     //  INICIALIZAR — obtener grafo desde DataInitializer
-    // ============================================================
+
     @FXML
     public void initialize() {
         grafoSocial = DataInitializer.getGrafoSocial();
     }
 
-    // ============================================================
+
     //  ABRIR VISTA DE AMIGOS
-    // ============================================================
     @FXML
     private void onOpenFriends(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/syncup/view/FriendsView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/syncup/view/Friends.fxml"));
             Parent root = loader.load();
 
             FriendsController controller = loader.getController();
@@ -54,13 +67,14 @@ public class UserDashboardController {
         }
     }
 
-    // ============================================================
+
     //  ABRIR CATÁLOGO
-    // ============================================================
     @FXML
     private void onOpenCatalog(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/syncup/view/CatalogView.fxml"));
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/syncup/view/catalog.fxml")
+            );
             Parent root = loader.load();
 
             Stage stage = new Stage();
@@ -73,13 +87,12 @@ public class UserDashboardController {
         }
     }
 
-    // ============================================================
-    //  ABRIR FAVORITOS
-    // ============================================================
+     // ABRIR FAVORITOS
+
     @FXML
     private void onOpenFavorites(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/syncup/view/FavoritesView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/syncup/view/Favorites.fxml"));
             Parent root = loader.load();
 
             FavoritesController controller = loader.getController();
@@ -95,9 +108,8 @@ public class UserDashboardController {
         }
     }
 
-    // ============================================================
     //  EXPORTAR FAVORITOS CSV SIN ABRIR LA VISTA
-    // ============================================================
+
     @FXML
     private void onExportFavoritesCSV(ActionEvent event) {
         try {

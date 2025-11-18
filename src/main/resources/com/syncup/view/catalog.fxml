@@ -17,8 +17,9 @@
         <VBox spacing="15">
 
             <!-- SEARCH BAR INCLUIDA -->
-            <fx:include fx:id="searchBar"
-                        source="/com/syncup/view/search_bar.fxml"/>
+            <fx:include source="/com/syncup/view/search_bar.fxml" fx:id="searchBar"/>
+
+
 
             <!-- PANEL DE RESULTADOS DE BÚSQUEDA -->
             <VBox fx:id="panelResultados"

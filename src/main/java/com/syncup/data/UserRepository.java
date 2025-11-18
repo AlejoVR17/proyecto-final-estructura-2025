@@ -14,7 +14,18 @@ public class UserRepository {
     // Mapa de usuarios: clave = username en minúsculas
     private final Map<String, User> users = new HashMap<>();
 
-    private UserRepository() {}
+    // --------------------------------------------------------------
+    //                 CONSTRUCTOR — CREA ADMIN
+    // --------------------------------------------------------------
+    private UserRepository() {
+        // Crear admin por defecto si no existe
+        User admin = new User("admin", "admin", "Administrador");
+
+        users.put("admin", admin);
+        GrafoSocial.getInstance().addUser(admin);
+
+        System.out.println("✔ Usuario admin creado por defecto");
+    }
 
     // --------------------------------------------------------------
     //                     OPERACIONES BÁSICAS

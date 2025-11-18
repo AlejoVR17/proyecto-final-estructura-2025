@@ -37,33 +37,7 @@ public class CatalogController {
     private CancionRepository repo;
     private User usuarioActual;
 
-    @FXML
-    public void initialize() {
 
-        repo = DataInitializerMusic.initRepository();
-
-        colTitulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
-        colArtista.setCellValueFactory(new PropertyValueFactory<>("artista"));
-        colGenero.setCellValueFactory(new PropertyValueFactory<>("genero"));
-
-        // CORRECCIÓN
-        List<Cancion> catalogo = new ArrayList<>(repo.obtenerTodas());
-        tableCatalog.getItems().setAll(catalogo);
-
-        FXMLLoader loader = (FXMLLoader) searchBar.getProperties().get("fx:loader");
-        SearchBarController searchController = loader.getController();
-
-        AdvancedSearch motor = new AdvancedSearch(catalogo);
-
-        searchController.init(motor, panelResultados);
-
-        tableCatalog.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 2) {
-                Cancion c = tableCatalog.getSelectionModel().getSelectedItem();
-                if (c != null) abrirDetalles(c);
-            }
-        });
-    }
 
     public void recibirRecomendador(RecommendationService r) {
         this.recomendador = r;

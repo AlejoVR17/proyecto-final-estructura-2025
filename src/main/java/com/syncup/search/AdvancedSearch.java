@@ -13,9 +13,17 @@ public class AdvancedSearch {
         this.catalogo = catalogo;
     }
 
-    public List<Cancion> buscar(String artista, String genero, Integer anio) throws Exception {
+    // Nuevo método con TÍTULO incluido
+    public List<Cancion> buscar(String titulo, String artista, String genero, Integer anio) throws Exception {
 
-        ExecutorService executor = Executors.newFixedThreadPool(3);
+        ExecutorService executor = Executors.newFixedThreadPool(4);
+
+        Callable<List<Cancion>> tareaTitulo = () -> {
+            if (titulo == null || titulo.isBlank()) return catalogo;
+            return catalogo.stream()
+                    .filter(c -> c.getTitulo().toLowerCase().contains(titulo.toLowerCase()))
+                    .collect(Collectors.toList());
+        };
 
         Callable<List<Cancion>> tareaArtista = () -> {
             if (artista == null || artista.isBlank()) return catalogo;
@@ -38,17 +46,23 @@ public class AdvancedSearch {
                     .collect(Collectors.toList());
         };
 
+        Future<List<Cancion>> rTitulo = executor.submit(tareaTitulo);
         Future<List<Cancion>> rArtista = executor.submit(tareaArtista);
         Future<List<Cancion>> rGenero = executor.submit(tareaGenero);
         Future<List<Cancion>> rAnio = executor.submit(tareaAnio);
 
-        // *** MEGA CORRECCIÓN ***
-        // Intersección final: solo canciones que cumplan TODOS los filtros
-        List<Cancion> resultado = new ArrayList<>(rArtista.get());
+        // Intersección final
+        List<Cancion> resultado = new ArrayList<>(rTitulo.get());
+        resultado.retainAll(rArtista.get());
         resultado.retainAll(rGenero.get());
         resultado.retainAll(rAnio.get());
 
         executor.shutdown();
         return resultado;
+    }
+
+    // Métodos anteriores siguen disponibles si los necesitas
+    public List<Cancion> buscar(String artista, String genero, Integer anio) throws Exception {
+        return buscar(null, artista, genero, anio);
     }
 }
