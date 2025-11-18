@@ -2,7 +2,6 @@ package com.syncup.data;
 
 import com.syncup.graph.GrafoDeSimilitud;
 import com.syncup.model.Cancion;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -69,7 +68,7 @@ public class DataInitializerMusic {
     }
 
     /**
-     * Inicializar grafo de similitud (esto no cambia)
+     * Inicializar grafo de similitud
      */
     public static GrafoDeSimilitud initGrafo() {
 

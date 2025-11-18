@@ -16,7 +16,7 @@ public class SocialSuggestionService {
         // Normalizar username
         final String usernameNormalized = username.toLowerCase();
 
-        // Obtener usuario base (CORREGIDO)
+        // Obtener usuario base
         User user = UserRepository.getInstance().get(usernameNormalized);
         if (user == null) return Collections.emptyList();
 

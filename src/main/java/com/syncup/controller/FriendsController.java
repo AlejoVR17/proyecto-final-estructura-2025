@@ -12,19 +12,22 @@ import java.util.List;
 
 public class FriendsController {
 
-    @FXML private TableView<User> tblUsuarios;
-    @FXML private TableColumn<User, String> colUsuario;
-    @FXML private TableColumn<User, String> colNombre;
-    @FXML private TableColumn<User, String> colEstado;
-    @FXML private Label lblResultado;
+    @FXML
+    private TableView<User> tblUsuarios;
+    @FXML
+    private TableColumn<User, String> colUsuario;
+    @FXML
+    private TableColumn<User, String> colNombre;
+    @FXML
+    private TableColumn<User, String> colEstado;
+    @FXML
+    private Label lblResultado;
 
     private final UserRepository userRepo = UserRepository.getInstance();
     private GrafoSocial grafo;
     private User usuarioActual;
 
-    // =========================
     //   MÉTODOS DE INYECCIÓN
-    // =========================
     public void setGrafoSocial(GrafoSocial grafo) {
         this.grafo = grafo;
     }
@@ -33,9 +36,7 @@ public class FriendsController {
         this.usuarioActual = user;
     }
 
-    // =========================
     //   INICIALIZACIÓN
-    // =========================
     public void initialize() {
 
         colUsuario.setCellValueFactory(c -> c.getValue().usernameProperty());
@@ -49,9 +50,7 @@ public class FriendsController {
         tblUsuarios.setItems(FXCollections.observableArrayList(userRepo.getAll()));
     }
 
-    // =========================
     //   ACCIÓN: SEGUIR
-    // =========================
     @FXML
     private void onSeguir() {
 
@@ -86,9 +85,7 @@ public class FriendsController {
         }
     }
 
-    // =========================
     //   ACCIÓN: DEJAR DE SEGUIR
-    // =========================
     @FXML
     private void onDejarSeguir() {
 
@@ -108,9 +105,7 @@ public class FriendsController {
         }
     }
 
-    // =========================
-    //   ACCIÓN: SUGERENCIAS
-    // =========================
+    // ACCIÓN: SUGERENCIAS
     @FXML
     private void onSugerencias() {
 
@@ -129,9 +124,7 @@ public class FriendsController {
         }
     }
 
-    // =========================
     //   ACCIÓN: AMIGOS EN COMÚN
-    // =========================
     @FXML
     private void onAmigosEnComun() {
 
@@ -158,9 +151,7 @@ public class FriendsController {
     }
 
 
-    // =========================
     //   ACCIÓN: AMIGOS DE AMIGOS (BFS)
-    // =========================
     @FXML
     private void onAmigosDeAmigos() {
 

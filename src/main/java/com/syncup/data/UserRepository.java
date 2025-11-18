@@ -2,7 +2,6 @@ package com.syncup.data;
 
 import com.syncup.graph.GrafoSocial;
 import com.syncup.model.User;
-
 import java.util.*;
 
 public class UserRepository {
@@ -14,10 +13,8 @@ public class UserRepository {
     // Mapa de usuarios: clave = username en minúsculas
     private final Map<String, User> users = new HashMap<>();
 
-    // --------------------------------------------------------------
-    //                 CONSTRUCTOR — CREA ADMIN
-    // --------------------------------------------------------------
-    private UserRepository() {
+        // CONSTRUCTOR — CREA ADMIN
+       private UserRepository() {
         // Crear admin por defecto si no existe
         User admin = new User("admin", "admin", "Administrador");
 
@@ -27,11 +24,7 @@ public class UserRepository {
         System.out.println("✔ Usuario admin creado por defecto");
     }
 
-    // --------------------------------------------------------------
-    //                     OPERACIONES BÁSICAS
-    // --------------------------------------------------------------
-
-    public boolean addUser(User u) {
+             public boolean addUser(User u) {
         if (u == null || u.getUsername() == null) return false;
 
         String username = u.getUsername().toLowerCase();
@@ -61,10 +54,8 @@ public class UserRepository {
         return users.values();
     }
 
-    // --------------------------------------------------------------
-    //                     ELIMINAR USUARIO
-    // --------------------------------------------------------------
-    public boolean eliminarUsuario(String username) {
+       //                     ELIMINAR USUARIO
+        public boolean eliminarUsuario(String username) {
         if (username == null) return false;
 
         username = username.toLowerCase();

@@ -20,22 +20,55 @@ public class Cancion {
     }
 
     // GETTERS
-    public int getId() { return id; }
-    public String getTitulo() { return titulo; }
-    public String getArtista() { return artista; }
-    public String getGenero() { return genero; }
-    public int getAnio() { return anio; }
-    public double getDuracion() { return duracion; }
+    public int getId() {
+        return id;
+    }
 
-    // SETTERS (NECESARIOS PARA EDITAR)
-    public void setTitulo(String titulo) { this.titulo = titulo; }
-    public void setArtista(String artista) { this.artista = artista; }
-    public void setGenero(String genero) { this.genero = genero; }
-    public void setAnio(int anio) { this.anio = anio; }
-    public void setDuracion(double duracion) { this.duracion = duracion; }
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getArtista() {
+        return artista;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public int getAnio() {
+        return anio;
+    }
+
+    public double getDuracion() {
+        return duracion;
+    }
+
+    // SETTERS
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setArtista(String artista) {
+        this.artista = artista;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public void setAnio(int anio) {
+        this.anio = anio;
+    }
+
+    public void setDuracion(double duracion) {
+        this.duracion = duracion;
+    }
 
     @Override
-    public int hashCode() { return Objects.hash(id); }
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 
     @Override
     public boolean equals(Object obj) {

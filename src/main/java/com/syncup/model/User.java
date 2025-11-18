@@ -2,7 +2,6 @@ package com.syncup.model;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-
 import java.util.LinkedList;
 import java.util.Objects;
 
@@ -20,34 +19,67 @@ public class User {
         this.password = new SimpleStringProperty(password);
         this.nombre = new SimpleStringProperty(nombre);
 
-        // Por defecto, todos "Activo" (puedes cambiar esto)
+        // Por defecto, todos "Activo"
         this.estado = new SimpleStringProperty("Activo");
 
         this.listaFavoritos = new LinkedList<>();
     }
 
     // ---------- PROPERTIES ----------
-    public StringProperty usernameProperty() { return username; }
-    public StringProperty passwordProperty() { return password; }
-    public StringProperty nombreRealProperty() { return nombre; }
-    public StringProperty estadoProperty() { return estado; }
+    public StringProperty usernameProperty() {
+        return username;
+    }
+
+    public StringProperty passwordProperty() {
+        return password;
+    }
+
+    public StringProperty nombreRealProperty() {
+        return nombre;
+    }
+
+    public StringProperty estadoProperty() {
+        return estado;
+    }
 
     // ---------- GETTERS / SETTERS ----------
-    public String getUsername() { return username.get(); }
-    public void setUsername(String username) { this.username.set(username); }
+    public String getUsername() {
+        return username.get();
+    }
 
-    public String getPassword() { return password.get(); }
-    public void setPassword(String password) { this.password.set(password); }
+    public void setUsername(String username) {
+        this.username.set(username);
+    }
 
-    public String getNombre() { return nombre.get(); }
-    public void setNombre(String nombre) { this.nombre.set(nombre); }
+    public String getPassword() {
+        return password.get();
+    }
 
-    public String getEstado() { return estado.get(); }
-    public void setEstado(String estado) { this.estado.set(estado); }
+    public void setPassword(String password) {
+        this.password.set(password);
+    }
 
-    public LinkedList<Cancion> getListaFavoritos() { return listaFavoritos; }
+    public String getNombre() {
+        return nombre.get();
+    }
 
-    // ---------- FAVORITOS ----------
+    public void setNombre(String nombre) {
+        this.nombre.set(nombre);
+    }
+
+    public String getEstado() {
+        return estado.get();
+    }
+
+    public void setEstado(String estado) {
+        this.estado.set(estado);
+    }
+
+    public LinkedList<Cancion> getListaFavoritos() {
+        return listaFavoritos;
+    }
+
+    // FAVORITOS
     public boolean agregarFavorito(Cancion c) {
         if (c == null) return false;
         if (!listaFavoritos.contains(c)) {
@@ -62,7 +94,7 @@ public class User {
         return listaFavoritos.remove(c);
     }
 
-    // ---------- EQUALS & HASHCODE ----------
+    // EQUALS & HASHCODE
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -6,7 +6,6 @@ import com.syncup.model.Cancion;
 import com.syncup.model.User;
 import com.syncup.search.AdvancedSearch;
 import com.syncup.service.RecommendationService;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,7 +17,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

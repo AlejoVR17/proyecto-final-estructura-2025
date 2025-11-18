@@ -2,7 +2,6 @@ package com.syncup.controller;
 
 import com.syncup.data.UserRepository;
 import com.syncup.model.User;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,10 +13,14 @@ import javafx.stage.Stage;
 
 public class ManageUsersController {
 
-    @FXML private TableView<User> tblUsers;
-    @FXML private TableColumn<User, String> colUsername;
-    @FXML private TableColumn<User, String> colNombre;
-    @FXML private Label lblMessage;
+    @FXML
+    private TableView<User> tblUsers;
+    @FXML
+    private TableColumn<User, String> colUsername;
+    @FXML
+    private TableColumn<User, String> colNombre;
+    @FXML
+    private Label lblMessage;
 
     private final UserRepository userRepo = UserRepository.getInstance();
 
@@ -30,9 +33,8 @@ public class ManageUsersController {
         actualizarTabla();
     }
 
-    // --------------------------------------------------------------
-    //                   AGREGAR USUARIO
-    // --------------------------------------------------------------
+    // AGREGAR USUARIO
+
     @FXML
     private void onAddUser() {
         try {
@@ -58,9 +60,8 @@ public class ManageUsersController {
         }
     }
 
-    // --------------------------------------------------------------
-    //                    ACTUALIZAR
-    // --------------------------------------------------------------
+
+    // ACTUALIZAR
     @FXML
     public void onRefresh() {
         actualizarTabla();
@@ -71,9 +72,7 @@ public class ManageUsersController {
         tblUsers.getItems().setAll(userRepo.getAll());
     }
 
-    // --------------------------------------------------------------
-    //                    ELIMINAR
-    // --------------------------------------------------------------
+    // ELIMINAR
     @FXML
     private void onDeleteUser() {
 

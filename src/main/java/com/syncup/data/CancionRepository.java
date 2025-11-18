@@ -7,16 +7,17 @@ public class CancionRepository {
 
     private static final Map<Integer, Cancion> canciones = new HashMap<>();
 
-    // ---------- SINGLETON ----------
+    // SINGLETON
     private static final CancionRepository instance = new CancionRepository();
 
-    private CancionRepository() {}
+    private CancionRepository() {
+    }
 
     public static CancionRepository getInstance() {
         return instance;
     }
 
-    // ---------- CRUD ----------
+    // CRUD
     public boolean agregarCancion(Cancion c) {
         if (canciones.containsKey(c.getId())) return false;
         canciones.put(c.getId(), c);

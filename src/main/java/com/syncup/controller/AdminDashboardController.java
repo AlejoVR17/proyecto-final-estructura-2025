@@ -2,7 +2,6 @@ package com.syncup.controller;
 
 import com.syncup.utils.SceneSwitcher;
 import com.syncup.utils.TrieInitializer;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -20,18 +18,14 @@ public class AdminDashboardController {
     @FXML
     private StackPane contentArea;
 
-    // ====================================================
     //      GESTIONAR CANCIONES
-    // ====================================================
     @FXML
     public void onGestionarCanciones(ActionEvent event) {
         loadIntoContent("/com/syncup/view/admin_songs.fxml",
                 "❌ Error al cargar la gestión de canciones.");
     }
 
-    // ====================================================
     //      GESTIONAR USUARIOS
-    // ====================================================
     @FXML
     public void onGestionarUsuarios(ActionEvent event) {
         try {
@@ -51,9 +45,7 @@ public class AdminDashboardController {
         }
     }
 
-    // ====================================================
-    //       CARGA MASIVA DE CANCIONES (TXT)
-    // ====================================================
+    // CARGA MASIVA DE CANCIONES (TXT)
     @FXML
     public void onCargarArchivo(ActionEvent event) {
 
@@ -89,7 +81,6 @@ public class AdminDashboardController {
                     com.syncup.model.Cancion c =
                             new com.syncup.model.Cancion(id, titulo, artista, genero, anio, duracion);
 
-                    // ⛔ YA NO SE VALIDA BOOLEANO (arreglado)
                     com.syncup.data.CancionRepository.getInstance().agregarCancion(c);
 
 
@@ -98,7 +89,8 @@ public class AdminDashboardController {
 
                     count++;
 
-                } catch (Exception ignored) {}
+                } catch (Exception ignored) {
+                }
             }
 
             Label ok = new Label("✅ Se cargaron " + count + " canciones correctamente.");
@@ -111,9 +103,7 @@ public class AdminDashboardController {
         }
     }
 
-    // ====================================================
-    //     CERRAR SESIÓN
-    // ====================================================
+    // CERRAR SESIÓN
     @FXML
     public void onCerrarSesion(ActionEvent event) {
         SceneSwitcher.switchScene(event,
@@ -121,9 +111,7 @@ public class AdminDashboardController {
                 "SyncUp - Inicio de Sesión");
     }
 
-    // ====================================================
     //     UTILIDADES
-    // ====================================================
     private void loadIntoContent(String fxml, String msgError) {
         try {
             Parent view = FXMLLoader.load(getClass().getResource(fxml));

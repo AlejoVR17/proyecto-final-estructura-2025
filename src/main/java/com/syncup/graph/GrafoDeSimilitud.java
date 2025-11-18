@@ -1,11 +1,12 @@
 package com.syncup.graph;
 
 import com.syncup.model.Cancion;
+
 import java.util.*;
 
 public class GrafoDeSimilitud {
 
-    // Lista de adyacencia: idCancion → lista de conexiones
+    // Lista de adyacencia: idCancion: lista de conexiones
     private final Map<Integer, List<Edge>> adjList = new HashMap<>();
 
     // Clase interna Edge
@@ -19,9 +20,7 @@ public class GrafoDeSimilitud {
         }
     }
 
-    // =========================================================================
-    //                           AGREGAR RELACIÓN
-    // =========================================================================
+    // AGREGAR RELACIÓN
     public void agregarConexion(int id1, int id2, int peso) {
 
         if (peso <= 0) return; // Mejora menor: evitar pesos inválidos
@@ -30,9 +29,7 @@ public class GrafoDeSimilitud {
         adjList.computeIfAbsent(id2, k -> new ArrayList<>()).add(new Edge(id1, peso));
     }
 
-    // =========================================================================
-    //                     OBTENER SIMILARES DIRECTOS
-    // =========================================================================
+    // OBTENER SIMILARES DIRECTOS
     public List<Integer> obtenerSimilares(int id) {
         List<Edge> edges = adjList.getOrDefault(id, Collections.emptyList());
         List<Integer> resultado = new ArrayList<>(edges.size());
@@ -44,9 +41,8 @@ public class GrafoDeSimilitud {
         return resultado;
     }
 
-    // =========================================================================
-    //                       DIJKSTRA: DISTANCIAS
-    // =========================================================================
+
+    // DIJKSTRA: DISTANCIAS
     public Map<Integer, Integer> dijkstra(int startId) {
 
         Map<Integer, Integer> dist = new HashMap<>();
@@ -85,9 +81,7 @@ public class GrafoDeSimilitud {
         return dist;
     }
 
-    // =========================================================================
-    //                    RUTA MÁS CORTA ENTRE DOS CANCIONES
-    // =========================================================================
+    // RUTA MÁS CORTA ENTRE DOS CANCIONES
     public List<Integer> rutaMasCorta(int origen, int destino) {
 
         Map<Integer, Integer> dist = new HashMap<>();
@@ -144,9 +138,8 @@ public class GrafoDeSimilitud {
         return camino;
     }
 
-    // =========================================================================
-    //       GENERAR RELACIONES AUTOMÁTICAS (ARTISTA, GÉNERO, AÑO)
-    // =========================================================================
+
+    // GENERAR RELACIONES AUTOMÁTICAS (ARTISTA, GÉNERO, AÑO)
     public void generarRelacionesAuto(List<Cancion> lista) {
 
         for (int i = 0; i < lista.size(); i++) {
@@ -173,16 +166,12 @@ public class GrafoDeSimilitud {
         }
     }
 
-    // =========================================================================
-    //                          LIMPIAR GRAFO
-    // =========================================================================
+    // LIMPIAR GRAFO
     public void limpiar() {
         adjList.clear();
     }
 
-    // =========================================================================
-    //                     ACCESO DESDE SERVICIOS
-    // =========================================================================
+    // ACCESO DESDE SERVICIOS
     public Map<Integer, List<Edge>> getAdjList() {
         return adjList;
     }

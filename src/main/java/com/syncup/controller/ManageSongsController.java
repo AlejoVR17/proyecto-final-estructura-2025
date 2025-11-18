@@ -11,11 +11,16 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class ManageSongsController {
 
-    @FXML private TableView<Cancion> tblSongs;
-    @FXML private TableColumn<Cancion, String> colTitulo;
-    @FXML private TableColumn<Cancion, String> colArtista;
-    @FXML private TextField txtId, txtTitulo, txtArtista, txtGenero, txtAnio, txtDuracion;
-    @FXML private Label lblMessage;
+    @FXML
+    private TableView<Cancion> tblSongs;
+    @FXML
+    private TableColumn<Cancion, String> colTitulo;
+    @FXML
+    private TableColumn<Cancion, String> colArtista;
+    @FXML
+    private TextField txtId, txtTitulo, txtArtista, txtGenero, txtAnio, txtDuracion;
+    @FXML
+    private Label lblMessage;
 
     private final CancionRepository repo = CancionRepository.getInstance();
 

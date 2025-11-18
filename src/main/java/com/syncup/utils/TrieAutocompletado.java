@@ -7,12 +7,14 @@ public class TrieAutocompletado {
     private static class Node {
         Map<Character, Node> children = new HashMap<>();
         boolean isWord = false;
-        String originalWord;   // ← Guarda la palabra como fue escrita
+        String originalWord;   // Guarda la palabra como fue escrita
     }
 
     private final Node root = new Node();
 
-    /** Inserta una palabra en el Trie */
+    /**
+     * Inserta una palabra en el Trie
+     */
     public void insert(String word) {
         if (word == null || word.isEmpty()) return;
 
@@ -24,10 +26,12 @@ public class TrieAutocompletado {
         }
 
         cur.isWord = true;
-        cur.originalWord = word;   // ← palabra original (con mayúsculas, acentos, etc.)
+        cur.originalWord = word;   // palabra original (con mayúsculas, acentos, etc.)
     }
 
-    /** Devuelve una lista de autocompletados */
+    /**
+     * Devuelve una lista de autocompletados
+     */
     public List<String> autocomplete(String prefix) {
         List<String> results = new ArrayList<>();
         if (prefix == null) return results;
@@ -44,10 +48,12 @@ public class TrieAutocompletado {
         return results;
     }
 
-    /** Recolección recursiva */
+    /**
+     * Recolección recursiva
+     */
     private void collect(Node node, List<String> results) {
         if (node.isWord) {
-            results.add(node.originalWord); // ← devolvemos palabra original
+            results.add(node.originalWord); // devolvemos palabra original
         }
 
         for (Map.Entry<Character, Node> entry : node.children.entrySet()) {

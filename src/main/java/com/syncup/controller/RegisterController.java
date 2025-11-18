@@ -12,11 +12,16 @@ import javafx.scene.control.TextField;
 
 public class RegisterController {
 
-    @FXML private TextField txtUser;
-    @FXML private TextField txtNombre;
-    @FXML private PasswordField txtPass;
-    @FXML private PasswordField txtConfirm;
-    @FXML private Label lblMessage;
+    @FXML
+    private TextField txtUser;
+    @FXML
+    private TextField txtNombre;
+    @FXML
+    private PasswordField txtPass;
+    @FXML
+    private PasswordField txtConfirm;
+    @FXML
+    private Label lblMessage;
 
     private final UserRepository repo = UserRepository.getInstance();
     private final GrafoSocial grafo = GrafoSocial.getInstance();
@@ -25,13 +30,11 @@ public class RegisterController {
     private void onRegister(ActionEvent event) {
 
         String username = txtUser.getText().trim().toLowerCase();
-        String nombre   = txtNombre.getText().trim();
-        String pass     = txtPass.getText().trim();
-        String confirm  = txtConfirm.getText().trim();
+        String nombre = txtNombre.getText().trim();
+        String pass = txtPass.getText().trim();
+        String confirm = txtConfirm.getText().trim();
 
-        // ------------------------
         // VALIDACIONES
-        // ------------------------
         if (username.isEmpty() || nombre.isEmpty() || pass.isEmpty() || confirm.isEmpty()) {
             lblMessage.setText("⚠ Todos los campos son obligatorios");
             return;
@@ -47,9 +50,7 @@ public class RegisterController {
             return;
         }
 
-        // ------------------------
         // CREAR USUARIO
-        // ------------------------
         User newUser = new User(username, pass, nombre);
 
         boolean ok = repo.addUser(newUser);
@@ -58,16 +59,13 @@ public class RegisterController {
             return;
         }
 
-        // IMPORTANTE:
-        // NO agregamos al grafo aquí porque UserRepository.addUser()
-        // ya lo agrega automáticamente. Si lo hacemos aquí → duplicados.
-        //
-        // grafo.addUser(newUser);  ← NO HACER
-
         lblMessage.setText("✅ Usuario registrado con éxito");
 
-        // Pequeño delay para que el usuario vea el mensaje
-        try { Thread.sleep(500); } catch (Exception ignored) {}
+        // una pequeña pausa para que el usuario vea el mensaje
+        try {
+            Thread.sleep(500);
+        } catch (Exception ignored) {
+        }
 
         // Cambiar a pantalla de login
         SceneSwitcher.switchScene(event, "/com/syncup/view/login.fxml", "Iniciar Sesión");

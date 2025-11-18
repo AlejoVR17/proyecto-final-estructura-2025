@@ -2,7 +2,6 @@ package com.syncup.controller;
 
 import com.syncup.model.Cancion;
 import com.syncup.search.AdvancedSearch;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -13,10 +12,14 @@ import java.util.List;
 
 public class SearchBarController {
 
-    @FXML private TextField txtArtista;
-    @FXML private TextField txtGenero;
-    @FXML private TextField txtAnio;
-    @FXML private Button btnBuscar;
+    @FXML
+    private TextField txtArtista;
+    @FXML
+    private TextField txtGenero;
+    @FXML
+    private TextField txtAnio;
+    @FXML
+    private Button btnBuscar;
 
     private AdvancedSearch motor;
     private VBox panelResultados;
@@ -39,7 +42,7 @@ public class SearchBarController {
 
         try {
             String artista = txtArtista.getText().trim();
-            String genero  = txtGenero.getText().trim();
+            String genero = txtGenero.getText().trim();
 
             Integer anio = null;
             String txtA = txtAnio.getText().trim();
@@ -48,7 +51,7 @@ public class SearchBarController {
                 anio = Integer.parseInt(txtA);
             }
 
-            // Ejecución "multihilo" → tu motor ya maneja paralelización
+            // Ejecución
             List<Cancion> resultados = motor.buscar(artista, genero, anio);
 
             // Mostrar resultados

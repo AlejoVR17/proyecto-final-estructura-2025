@@ -9,10 +9,14 @@ import javafx.stage.Stage;
 
 public class AddUserController {
 
-    @FXML private TextField txtUsername;
-    @FXML private PasswordField txtPassword;
-    @FXML private TextField txtNombre;
-    @FXML private Label lblError;
+    @FXML
+    private TextField txtUsername;
+    @FXML
+    private PasswordField txtPassword;
+    @FXML
+    private TextField txtNombre;
+    @FXML
+    private Label lblError;
 
     private boolean creado = false;
 
@@ -26,13 +30,11 @@ public class AddUserController {
 
         String username = txtUsername.getText().trim().toLowerCase();
         String password = txtPassword.getText().trim();
-        String nombre   = txtNombre.getText().trim();
+        String nombre = txtNombre.getText().trim();
 
         UserRepository repo = UserRepository.getInstance();
 
-        // ===============================================
         // VALIDACIONES
-        // ===============================================
 
         if (username.isEmpty() || password.isEmpty()) {
             lblError.setText("⚠ El usuario y la contraseña son obligatorios.");
@@ -68,10 +70,7 @@ public class AddUserController {
             nombre = "Usuario";
         }
 
-        // ===============================================
         // CREAR USUARIO
-        // ===============================================
-
         User nuevo = new User(username, password, nombre);
 
         boolean ok = repo.addUser(nuevo);
@@ -83,9 +82,8 @@ public class AddUserController {
 
         creado = true;
 
-        // ===============================================
+
         // CERRAR VENTANA
-        // ===============================================
         Stage stage = (Stage) txtUsername.getScene().getWindow();
         stage.close();
     }

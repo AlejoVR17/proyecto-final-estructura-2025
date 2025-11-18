@@ -12,7 +12,7 @@ public class ExportadorCSV {
      * Exporta una lista de canciones a un archivo CSV.
      * RF-009: Descargar reporte de canciones favoritas.
      *
-     * @param canciones Lista de canciones a exportar.
+     * @param canciones   Lista de canciones a exportar.
      * @param rutaArchivo Ruta del archivo destino .csv
      * @throws IOException Si ocurre un error al escribir el archivo.
      */

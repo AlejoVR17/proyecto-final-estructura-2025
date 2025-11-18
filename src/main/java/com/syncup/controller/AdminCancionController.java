@@ -9,23 +9,35 @@ import javafx.scene.control.*;
 
 public class AdminCancionController {
 
-    // ========== TABLA ==========
-    @FXML private TableView<Cancion> tableCanciones;
+    // TABLA
+    @FXML
+    private TableView<Cancion> tableCanciones;
+    @FXML
+    private TableColumn<Cancion, Integer> colId;
+    @FXML
+    private TableColumn<Cancion, String> colTitulo;
+    @FXML
+    private TableColumn<Cancion, String> colArtista;
+    @FXML
+    private TableColumn<Cancion, String> colGenero;
+    @FXML
+    private TableColumn<Cancion, Integer> colAnio;
+    @FXML
+    private TableColumn<Cancion, Double> colDuracion;
 
-    @FXML private TableColumn<Cancion, Integer> colId;
-    @FXML private TableColumn<Cancion, String> colTitulo;
-    @FXML private TableColumn<Cancion, String> colArtista;
-    @FXML private TableColumn<Cancion, String> colGenero;
-    @FXML private TableColumn<Cancion, Integer> colAnio;
-    @FXML private TableColumn<Cancion, Double> colDuracion;
-
-    // ========== CAMPOS ==========
-    @FXML private TextField txtId;
-    @FXML private TextField txtTitulo;
-    @FXML private TextField txtArtista;
-    @FXML private TextField txtGenero;
-    @FXML private TextField txtAnio;
-    @FXML private TextField txtDuracion;
+    // CAMPOS
+    @FXML
+    private TextField txtId;
+    @FXML
+    private TextField txtTitulo;
+    @FXML
+    private TextField txtArtista;
+    @FXML
+    private TextField txtGenero;
+    @FXML
+    private TextField txtAnio;
+    @FXML
+    private TextField txtDuracion;
 
     @FXML
     public void initialize() {
@@ -39,36 +51,25 @@ public class AdminCancionController {
         });
     }
 
-    // =============================
     // CONFIGURAR COLUMNAS
-    // =============================
 
     private void configurarColumnas() {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colTitulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
         colArtista.setCellValueFactory(new PropertyValueFactory<>("artista"));
         colGenero.setCellValueFactory(new PropertyValueFactory<>("genero"));
-
-        // ⬅️ DEBE SER "anio", porque tu método es getAnio()
         colAnio.setCellValueFactory(new PropertyValueFactory<>("anio"));
-
         colDuracion.setCellValueFactory(new PropertyValueFactory<>("duracion"));
     }
 
-
-
-    // =============================
     // CARGAR TABLA
-    // =============================
     private void cargarCanciones() {
         tableCanciones.setItems(
                 FXCollections.observableArrayList(AdminSongService.obtenerCanciones())
         );
     }
 
-    // =============================
     // LLENAR FORMULARIO
-    // =============================
     private void llenarFormulario(Cancion c) {
         txtId.setText(String.valueOf(c.getId()));
         txtTitulo.setText(c.getTitulo());
@@ -78,9 +79,7 @@ public class AdminCancionController {
         txtDuracion.setText(String.valueOf(c.getDuracion()));
     }
 
-    // =============================
     //      BOTÓN: AGREGAR
-    // =============================
     @FXML
     private void onAgregar() {
         try {
@@ -106,9 +105,7 @@ public class AdminCancionController {
         }
     }
 
-    // =============================
     //        BOTÓN: EDITAR
-    // =============================
     @FXML
     private void onEditar() {
         Cancion seleccionada = tableCanciones.getSelectionModel().getSelectedItem();
@@ -137,9 +134,7 @@ public class AdminCancionController {
         }
     }
 
-    // =============================
     //       BOTÓN: ELIMINAR
-    // =============================
     @FXML
     private void onEliminar() {
         Cancion seleccionada = tableCanciones.getSelectionModel().getSelectedItem();
@@ -154,9 +149,7 @@ public class AdminCancionController {
         limpiar();
     }
 
-    // =============================
     // UTILIDADES
-    // =============================
     private void limpiar() {
         txtId.clear();
         txtTitulo.clear();

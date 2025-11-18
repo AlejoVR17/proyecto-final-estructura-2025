@@ -2,7 +2,6 @@ package com.syncup.service;
 
 import com.syncup.data.UserRepository;
 import com.syncup.model.User;
-
 import java.util.Collection;
 
 /**

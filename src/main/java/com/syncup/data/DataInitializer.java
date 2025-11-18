@@ -5,20 +5,15 @@ import com.syncup.model.User;
 
 public class DataInitializer {
 
-    // Usaremos SIEMPRE el singleton real
     private static final GrafoSocial grafoSocial = GrafoSocial.getInstance();
 
-    // =====================================================
-    //   MÉTODO PRINCIPAL — LLÁMALO DESDE EL LOGIN
-    // =====================================================
+    //   Metodo principal
     public static void init() {
         cargarUsuarios();
         initSocialGraph();
     }
 
-    // =====================================================
     //   CARGAR USUARIOS
-    // =====================================================
     public static void cargarUsuarios() {
         UserRepository repo = UserRepository.getInstance();
 
@@ -31,9 +26,7 @@ public class DataInitializer {
         System.out.println("✔ Usuarios cargados correctamente.");
     }
 
-    // =====================================================
     //   CREAR GRAFO SOCIAL + RELACIONES
-    // =====================================================
     private static void initSocialGraph() {
         UserRepository repo = UserRepository.getInstance();
 
@@ -49,9 +42,7 @@ public class DataInitializer {
         System.out.println("✔ Grafo social inicializado.");
     }
 
-    // =====================================================
     //   RETORNAR EL GRAFO
-    // =====================================================
     public static GrafoSocial getGrafoSocial() {
         return grafoSocial;
     }

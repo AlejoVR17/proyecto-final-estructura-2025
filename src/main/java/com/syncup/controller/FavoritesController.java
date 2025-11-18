@@ -11,25 +11,26 @@ import java.io.PrintWriter;
 
 public class FavoritesController {
 
-    @FXML private TableView<Cancion> tblFavoritos;
-    @FXML private TableColumn<Cancion, String> colTitulo;
-    @FXML private TableColumn<Cancion, String> colArtista;
-    @FXML private TableColumn<Cancion, String> colGenero;
-    @FXML private Label lblMensaje;
+    @FXML
+    private TableView<Cancion> tblFavoritos;
+    @FXML
+    private TableColumn<Cancion, String> colTitulo;
+    @FXML
+    private TableColumn<Cancion, String> colArtista;
+    @FXML
+    private TableColumn<Cancion, String> colGenero;
+    @FXML
+    private Label lblMensaje;
 
     private User currentUser;
 
-    // ============================================================
-    //  SETTER CORRECTO (el que usa tu Dashboard)
-    // ============================================================
+    //  SETTER CORRECTO
     public void setCurrentUser(User user) {
         this.currentUser = user;
         cargarFavoritos();
     }
 
-    // ============================================================
     //  CARGAR TABLA DE FAVORITOS
-    // ============================================================
     private void cargarFavoritos() {
 
         colTitulo.setCellValueFactory(c ->
@@ -48,9 +49,8 @@ public class FavoritesController {
         }
     }
 
-    // ============================================================
-    //  ELIMINAR FAVORITO
-    // ============================================================
+
+    // ELIMINAR FAVORITO
     @FXML
     private void onEliminarFavorito() {
         Cancion seleccionada = tblFavoritos.getSelectionModel().getSelectedItem();
@@ -66,9 +66,7 @@ public class FavoritesController {
         cargarFavoritos();
     }
 
-    // ============================================================
-    //  EXPORTAR CSV (ESTÁTICO PARA USARLO DESDE EL DASHBOARD)
-    // ============================================================
+    // EXPORTAR CSV
     public static void exportarFavoritosCSV(User user) {
         try {
             String fileName = "favoritos_" + user.getUsername() + ".csv";

@@ -4,7 +4,6 @@ import com.syncup.graph.GrafoDeSimilitud;
 import com.syncup.graph.GrafoDeSimilitud.Edge;
 import com.syncup.model.Cancion;
 import com.syncup.model.User;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -26,7 +25,7 @@ public class PlaylistService {
                 ? new ArrayList<>()
                 : new ArrayList<>(user.getListaFavoritos());
 
-        // 2. Si no tiene favoritos → recomendar primeras 5
+        // 2. Si no tiene favoritos
         if (favoritos.isEmpty()) {
             return repo.obtenerTodas()
                     .stream()
@@ -51,7 +50,7 @@ public class PlaylistService {
                     });
         }
 
-        // 4. Rellenar hasta 5 recomendaciones
+        // 4. Rellenar
         if (recomendadas.size() < 5) {
             List<Cancion> restantes = repo.obtenerTodas().stream()
                     .filter(c -> !favoritos.contains(c))

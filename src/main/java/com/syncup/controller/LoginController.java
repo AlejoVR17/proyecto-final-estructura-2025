@@ -36,15 +36,13 @@ public class LoginController {
             UserRepository repo = UserRepository.getInstance();
             User user = repo.getUser(username);
 
-            // 🔥 VALIDACIÓN GENERAL
+            // VALIDACIÓN GENERAL
             if (user == null || !user.getPassword().equals(password)) {
                 lblMessage.setText("❌ Usuario o contraseña incorrectos");
                 return;
             }
 
-            // =====================================================
-            //  ✔️ ADMIN LOGIN CORRECTO
-            // =====================================================
+            // ADMIN LOGIN
             if (username.equals("admin") && password.equals("admin")) {
 
                 FXMLLoader loader =
@@ -60,12 +58,10 @@ public class LoginController {
                 stage.setScene(scene);
                 stage.show();
 
-                return;   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< OBLIGATORIO
+                return;
             }
 
-            // =====================================================
-            //  ✔️ LOGIN USUARIO NORMAL
-            // =====================================================
+            // LOGIN USUARIO NORMAL
             FXMLLoader loader =
                     new FXMLLoader(getClass().getResource("/com/syncup/view/user_dashboard.fxml"));
 

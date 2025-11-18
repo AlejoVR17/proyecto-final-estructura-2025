@@ -3,28 +3,34 @@ package com.syncup.controller;
 import com.syncup.model.Cancion;
 import com.syncup.model.User;
 import com.syncup.service.RecommendationService;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 import java.util.Queue;
 
 public class SongDetailController {
 
-    @FXML private ImageView imgCover;
+    @FXML
+    private ImageView imgCover;
 
-    @FXML private Label lblTitle;
-    @FXML private Label lblArtist;
-    @FXML private Label lblGenre;
-    @FXML private Label lblYear;
-    @FXML private Label lblDuration;
+    @FXML
+    private Label lblTitle;
+    @FXML
+    private Label lblArtist;
+    @FXML
+    private Label lblGenre;
+    @FXML
+    private Label lblYear;
+    @FXML
+    private Label lblDuration;
 
-    @FXML private Button btnRadio;
-    @FXML private Button btnFav;
+    @FXML
+    private Button btnRadio;
+    @FXML
+    private Button btnFav;
 
     private Cancion cancion;
     private RecommendationService recomendador;
@@ -85,10 +91,10 @@ public class SongDetailController {
 
         if (!usuarioActual.getListaFavoritos().contains(cancion)) {
             usuarioActual.getListaFavoritos().add(cancion);
-            System.out.println("❤️ Agregado a favoritos: " + cancion.getTitulo());
+            System.out.println("❤ Agregado a favoritos: " + cancion.getTitulo());
         } else {
             usuarioActual.getListaFavoritos().remove(cancion);
-            System.out.println("🗑 Removido de favoritos: " + cancion.getTitulo());
+            System.out.println("Removido de favoritos: " + cancion.getTitulo());
         }
 
         actualizarBotonFavorito();

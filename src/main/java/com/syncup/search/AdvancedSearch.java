@@ -1,6 +1,7 @@
 package com.syncup.search;
 
 import com.syncup.model.Cancion;
+
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.stream.Collectors;
@@ -13,7 +14,6 @@ public class AdvancedSearch {
         this.catalogo = catalogo;
     }
 
-    // Nuevo método con TÍTULO incluido
     public List<Cancion> buscar(String titulo, String artista, String genero, Integer anio) throws Exception {
 
         ExecutorService executor = Executors.newFixedThreadPool(4);
@@ -61,7 +61,6 @@ public class AdvancedSearch {
         return resultado;
     }
 
-    // Métodos anteriores siguen disponibles si los necesitas
     public List<Cancion> buscar(String artista, String genero, Integer anio) throws Exception {
         return buscar(null, artista, genero, anio);
     }
