@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.syncup.controller.AdminCancionController"
+            style="-fx-background-color: #121212; -fx-padding: 25;">
+
+    <!-- TITULO SUPERIOR -->
+    <top>
+        <Label text="Gestión de Canciones"
+               BorderPane.alignment="CENTER"
+               style="-fx-font-size: 24px; -fx-text-fill: white; -fx-font-weight: bold;" />
+    </top>
+
+    <!-- TABLA DE CANCIONES -->
+    <center>
+        <TableView fx:id="tableCanciones"
+                   style="-fx-background-color: #1e1e1e;"
+                   BorderPane.alignment="CENTER">
+
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="60"/>
+                <TableColumn fx:id="colTitulo" text="Título" prefWidth="180"/>
+                <TableColumn fx:id="colArtista" text="Artista" prefWidth="150"/>
+                <TableColumn fx:id="colGenero" text="Género" prefWidth="100"/>
+                <TableColumn fx:id="colAnio" text="Año" prefWidth="80"/>
+                <TableColumn fx:id="colDuracion" text="Duración" prefWidth="80"/>
+            </columns>
+
+        </TableView>
+    </center>
+
+    <!-- ZONA DE EDICIÓN Y BOTONES -->
+    <bottom>
+        <VBox spacing="15" style="-fx-padding: 20; -fx-background-color: #1a1a1a; -fx-background-radius: 10;">
+
+            <GridPane hgap="12" vgap="12" style="-fx-padding: 10;">
+
+                <Label text="ID:" GridPane.rowIndex="0"/>
+                <TextField fx:id="txtId" prefWidth="220" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="Título:" GridPane.rowIndex="1"/>
+                <TextField fx:id="txtTitulo" prefWidth="220" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <Label text="Artista:" GridPane.rowIndex="2"/>
+                <TextField fx:id="txtArtista" prefWidth="220" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                <Label text="Género:" GridPane.rowIndex="3"/>
+                <TextField fx:id="txtGenero" prefWidth="220" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                <Label text="Año:" GridPane.rowIndex="4"/>
+                <TextField fx:id="txtAnio" prefWidth="220" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+                <Label text="Duración:" GridPane.rowIndex="5"/>
+                <TextField fx:id="txtDuracion" prefWidth="220" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+            </GridPane>
+
+            <!-- MENSAJE AL USUARIO -->
+            <Label fx:id="lblMensaje"
+                   text=""
+                   style="-fx-text-fill: #b3b3b3; -fx-font-size: 13px;"/>
+
+            <!-- BOTONES -->
+            <HBox spacing="20" alignment="CENTER">
+                <Button text="Agregar" onAction="#onAgregar" />
+                <Button text="Editar" onAction="#onEditar" />
+                <Button text="Eliminar" onAction="#onEliminar" />
+            </HBox>
+
+        </VBox>
+    </bottom>
+
+</BorderPane>

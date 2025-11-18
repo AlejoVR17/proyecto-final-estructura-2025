@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.syncup.controller.CatalogController"
+            style="-fx-background-color: #121212; -fx-padding: 20;">
+
+    <!-- TÍTULO -->
+    <top>
+        <Label text="Catálogo de Canciones"
+               style="-fx-font-size: 22px; -fx-text-fill: white; -fx-font-weight: bold;"/>
+    </top>
+
+    <center>
+        <VBox spacing="15">
+
+            <!-- SEARCH BAR INCLUIDA -->
+            <fx:include fx:id="searchBar"
+                        source="/com/syncup/view/search_bar.fxml"/>
+
+            <!-- PANEL DE RESULTADOS DE BÚSQUEDA -->
+            <VBox fx:id="panelResultados"
+                  spacing="5"
+                  style="-fx-padding: 10;"/>
+
+            <!-- TABLA DE CANCIONES -->
+            <TableView fx:id="tableCatalog"
+                       style="-fx-background-color: #1e1e1e; -fx-text-fill: white;">
+                <columns>
+                    <TableColumn fx:id="colTitulo" text="Título" prefWidth="200"/>
+                    <TableColumn fx:id="colArtista" text="Artista" prefWidth="150"/>
+                    <TableColumn fx:id="colGenero" text="Género" prefWidth="120"/>
+                </columns>
+            </TableView>
+
+        </VBox>
+    </center>
+
+</BorderPane>

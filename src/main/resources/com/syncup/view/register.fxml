@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.syncup.controller.RegisterController"
+            stylesheets="/css/spotify-theme.css"
+            styleClass="rootPane">
+
+    <VBox spacing="15" alignment="CENTER"
+          layoutX="200" layoutY="40"
+          styleClass="loginCard">
+
+        <Label text="Crear Cuenta" styleClass="mainTitle"/>
+
+        <!-- Nombre completo -->
+        <TextField fx:id="txtNombre"
+                   promptText="Nombre completo"
+                   styleClass="inputField"/>
+
+        <TextField fx:id="txtUser"
+                   promptText="Usuario"
+                   styleClass="inputField"/>
+
+        <PasswordField fx:id="txtPass"
+                       promptText="Contraseña"
+                       styleClass="inputField"/>
+
+        <PasswordField fx:id="txtConfirm"
+                       promptText="Confirmar contraseña"
+                       styleClass="inputField"/>
+
+        <!-- Mensaje dinámico -->
+        <Label fx:id="lblMessage"
+               text=""
+               styleClass="messageLabel"/>
+
+        <Button text="Registrar"
+                styleClass="primaryBtn"
+                onAction="#onRegister"/>
+
+        <Button text="Cancelar"
+                styleClass="secondaryBtn"
+                onAction="#onCancel"/>
+
+    </VBox>
+
+</AnchorPane>

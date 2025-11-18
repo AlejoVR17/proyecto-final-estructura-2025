@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.syncup.controller.AddUserController"
+            stylesheets="/css/spotify-theme.css"
+            styleClass="rootPane">
+
+    <VBox spacing="15"
+          alignment="CENTER"
+          styleClass="loginCard"
+          AnchorPane.topAnchor="40"
+          AnchorPane.bottomAnchor="40"
+          AnchorPane.leftAnchor="120"
+          AnchorPane.rightAnchor="120">
+
+        <Label text="Agregar Nuevo Usuario"
+               styleClass="mainTitle"/>
+
+        <TextField fx:id="txtUsername"
+                   promptText="Nombre de usuario"
+                   styleClass="inputField"
+                   prefWidth="280"/>
+
+        <PasswordField fx:id="txtPassword"
+                       promptText="Contraseña"
+                       styleClass="inputField"
+                       prefWidth="280"/>
+
+        <TextField fx:id="txtNombre"
+                   promptText="Nombre real (opcional)"
+                   styleClass="inputField"
+                   prefWidth="280"/>
+
+        <Label fx:id="lblError" text="" styleClass="messageLabel"/>
+
+        <HBox spacing="12" alignment="CENTER">
+            <Button text="Aceptar"
+                    styleClass="primaryBtn"
+                    onAction="#onAceptar"/>
+            <Button text="Cancelar"
+                    styleClass="secondaryBtn"
+                    onAction="#onCancelar"/>
+        </HBox>
+
+    </VBox>
+
+</AnchorPane>

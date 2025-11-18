@@ -1,0 +1,6 @@
+1;Bohemian Rhapsody;Queen;Rock;1975;5.55
+2;Don't Stop Me Now;Queen;Rock;1979;3.29
+3;Shape of You;Ed Sheeran;Pop;2017;4.24
+4;Thriller;Michael Jackson;Pop;1982;5.57
+5;Smells Like Teen Spirit;Nirvana;Rock;1991;5.01
+6;Billie Jean;Michael Jackson;Pop;1982;4.54

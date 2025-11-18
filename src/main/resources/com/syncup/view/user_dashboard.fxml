@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.syncup.controller.UserDashboardController"
+            stylesheets="/css/spotify-theme.css"
+            styleClass="rootPane"
+            prefWidth="900" prefHeight="550">
+
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT"
+              styleClass="topBar"
+              BorderPane.alignment="CENTER">
+
+            <Label text="Bienvenido a SyncUp 🎧"
+                   fx:id="titleLabel"
+                   styleClass="titleLabel"/>
+        </HBox>
+    </top>
+
+    <left>
+        <VBox spacing="15" alignment="TOP_CENTER"
+              styleClass="sideMenu"
+              prefWidth="220">
+
+            <Button text="Catálogo" fx:id="btnCatalog"
+                    prefWidth="180"
+                    styleClass="menuBtn"
+                    onAction="#onOpenCatalog"/>
+
+            <Button text="Amigos" fx:id="btnFriends"
+                    prefWidth="180"
+                    styleClass="menuBtn"
+                    onAction="#onOpenFriends"/>
+
+            <Button text="Favoritos ❤" fx:id="btnFavorites"
+                    prefWidth="180"
+                    styleClass="menuBtn"
+                    onAction="#onOpenFavorites"/>
+
+            <Button text="Exportar Favoritos CSV"
+                    fx:id="btnExportCSV"
+                    prefWidth="180"
+                    styleClass="menuBtn"
+                    onAction="#onExportFavoritesCSV"/>
+
+        </VBox>
+    </left>
+
+
+</BorderPane>

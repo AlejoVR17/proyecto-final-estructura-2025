@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.syncup.controller.SongDetailController"
+      spacing="20"
+      alignment="CENTER"
+      style="-fx-background-color: #121212; -fx-padding: 30;">
+
+    <!-- Portada -->
+    <ImageView fx:id="imgCover"
+               fitWidth="200"
+               fitHeight="200"
+               preserveRatio="true"
+               style="-fx-effect: dropshadow(gaussian, black, 20, 0, 0, 0);" />
+
+    <!-- Título -->
+    <Label fx:id="lblTitle"
+           style="-fx-text-fill: white; -fx-font-size: 26px; -fx-font-weight: bold;" />
+
+    <!-- Artista -->
+    <Label fx:id="lblArtist"
+           style="-fx-text-fill: #bbbbbb; -fx-font-size: 18px;" />
+
+    <!-- Género -->
+    <Label fx:id="lblGenre"
+           style="-fx-text-fill: #888888; -fx-font-size: 16px;" />
+
+    <!-- Año -->
+    <Label fx:id="lblYear"
+           style="-fx-text-fill: #888888; -fx-font-size: 16px;" />
+
+    <!-- Duración -->
+    <Label fx:id="lblDuration"
+           style="-fx-text-fill: #888888; -fx-font-size: 16px;" />
+
+    <!-- Botones -->
+    <HBox spacing="20" alignment="CENTER">
+
+        <Button fx:id="btnRadio"
+                text="▶ Iniciar Radio"
+                style="-fx-background-color: #1db954;
+                       -fx-text-fill: white;
+                       -fx-font-size: 16px;
+                       -fx-padding: 10 20;" />
+
+        <Button fx:id="btnFav"
+                text="❤ Favorito"
+                style="-fx-background-color: #282828;
+                       -fx-text-fill: white;
+                       -fx-font-size: 16px;
+                       -fx-padding: 10 20;" />
+
+    </HBox>
+
+</VBox>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.syncup.controller.AdminDashboardController"
+            stylesheets="@/css/spotify-theme.css"
+            prefWidth="850" prefHeight="500"
+            styleClass="rootPane">
+
+    <left>
+        <VBox spacing="15" alignment="TOP_CENTER"
+              prefWidth="220"
+              styleClass="sideMenu">
+
+            <Label text="Admin SyncUp" styleClass="titleLabel"/>
+
+            <Button text="Gestionar Canciones" fx:id="btnCanciones"
+                    prefWidth="180" styleClass="menuBtn"
+                    onAction="#onGestionarCanciones"/>
+
+            <Button text="Gestionar Usuarios" fx:id="btnUsuarios"
+                    prefWidth="180" styleClass="menuBtn"
+                    onAction="#onGestionarUsuarios"/>
+
+            <Button text="Cargar Archivo .txt" fx:id="btnCargar"
+                    prefWidth="180" styleClass="menuBtn"
+                    onAction="#onCargarArchivo"/>
+
+            <Button text="Cerrar Sesión" fx:id="btnCerrar"
+                    prefWidth="180" styleClass="menuBtnExit"
+                    onAction="#onCerrarSesion"/>
+        </VBox>
+    </left>
+
+    <center>
+        <StackPane fx:id="contentArea" styleClass="centerArea">
+            <Label text="Bienvenido Administrador 👑"
+                   styleClass="welcomeLabel"/>
+        </StackPane>
+    </center>
+
+</BorderPane>

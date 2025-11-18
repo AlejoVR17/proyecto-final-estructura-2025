@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.syncup.controller.SearchBarController"
+      fx:id="root"
+      spacing="12"
+      style="-fx-padding: 10; -fx-background-color: #1e1e1e; -fx-background-radius: 10;">
+
+    <TextField fx:id="txtTitulo"
+               promptText="Título"
+               prefWidth="160"/>
+
+    <TextField fx:id="txtArtista"
+               promptText="Artista"
+               prefWidth="140"/>
+
+    <TextField fx:id="txtGenero"
+               promptText="Género"
+               prefWidth="120"/>
+
+    <TextField fx:id="txtAnio"
+               promptText="Año"
+               prefWidth="70"/>
+
+    <Button fx:id="btnBuscar"
+            text="Buscar"
+            onAction="#onBuscar"
+            style="-fx-background-color: #1DB954; -fx-text-fill: white;"/>
+
+</HBox>

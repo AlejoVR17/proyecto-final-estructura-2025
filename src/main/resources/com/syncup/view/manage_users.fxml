@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.syncup.controller.ManageUsersController"
+            stylesheets="/css/spotify-theme.css"
+            styleClass="rootPane">
+
+    <!-- TÍTULO SUPERIOR -->
+    <top>
+        <Label text="Administrar Usuarios"
+               styleClass="sectionTitle"
+               BorderPane.alignment="CENTER"/>
+    </top>
+
+    <!-- TABLA DE USUARIOS -->
+    <center>
+        <TableView fx:id="tblUsers" styleClass="tableView">
+            <columns>
+                <TableColumn fx:id="colUsername"
+                             text="Usuario"
+                             prefWidth="200"/>
+
+                <TableColumn fx:id="colNombre"
+                             text="Nombre"
+                             prefWidth="200"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <!-- BOTONES INFERIORES (YA FUNCIONAN TODOS) -->
+    <bottom>
+        <HBox spacing="15" style="-fx-padding: 14;" BorderPane.alignment="CENTER">
+
+            <!-- Botón agregar -->
+            <Button text="⨁ Agregar"
+                    onAction="#onAddUser"
+                    styleClass="actionButton"/>
+
+            <!-- Botón actualizar -->
+            <Button text="⟳ Actualizar"
+                    onAction="#onRefresh"
+                    styleClass="actionButton"/>
+
+            <!-- Botón eliminar -->
+            <Button text="✖ Eliminar"
+                    onAction="#onDeleteUser"
+                    styleClass="actionButton"/>
+
+            <!-- Mensaje inferior -->
+            <Label fx:id="lblMessage"
+                   style="-fx-text-fill: rgba(255,255,255,0.8);"
+                   HBox.hgrow="ALWAYS"/>
+
+        </HBox>
+    </bottom>
+
+</BorderPane>

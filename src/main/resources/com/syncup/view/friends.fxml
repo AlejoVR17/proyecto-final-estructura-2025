@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.syncup.controller.FriendsController"
+            stylesheets="/css/spotify-theme.css"
+            styleClass="rootPane">
+
+    <!-- TÍTULO SUPERIOR -->
+    <top>
+        <HBox styleClass="topBar">
+            <Label text="👥 Amigos"
+                   styleClass="titleLabel"/>
+        </HBox>
+    </top>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <center>
+        <VBox spacing="20"
+              alignment="TOP_CENTER"
+              styleClass="centerArea">
+
+            <!-- TABLA DE AMIGOS -->
+            <TableView fx:id="tblUsuarios"
+                       styleClass="tableView"
+                       prefHeight="320"
+                       maxWidth="480">
+
+                <columns>
+                    <TableColumn fx:id="colUsuario"
+                                 text="Usuario"
+                                 prefWidth="150"/>
+                    <TableColumn fx:id="colNombre"
+                                 text="Nombre"
+                                 prefWidth="200"/>
+                    <TableColumn fx:id="colEstado"
+                                 text="Estado"
+                                 prefWidth="120"/>
+                </columns>
+            </TableView>
+
+            <!-- BOTONES DE ACCIÓN -->
+            <HBox spacing="15" alignment="CENTER">
+
+                <Button text="➕ Seguir"
+                        onAction="#onSeguir"
+                        styleClass="primaryBtn"/>
+
+                <Button text="❌ Dejar de seguir"
+                        onAction="#onDejarSeguir"
+                        styleClass="secondaryBtn"/>
+
+                <Button text="✨ Sugerencias"
+                        onAction="#onSugerencias"
+                        styleClass="secondaryBtn"/>
+
+                <Button text="🤝 Amigos en común"
+                        onAction="#onAmigosEnComun"
+                        styleClass="secondaryBtn"/>
+
+                <Button text="🌐 Amigos de amigos (BFS)"
+                        onAction="#onAmigosDeAmigos"
+                        styleClass="secondaryBtn"/>
+            </HBox>
+
+            <!-- MENSAJE DE ESTADO -->
+            <Label fx:id="lblResultado"
+                   style="-fx-text-fill: white; -fx-font-size: 15px;"/>
+
+        </VBox>
+    </center>
+
+</BorderPane>

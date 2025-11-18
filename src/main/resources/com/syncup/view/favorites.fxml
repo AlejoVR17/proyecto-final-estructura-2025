@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.syncup.controller.FavoritesController"
+            stylesheets="/css/spotify-theme.css"
+            styleClass="rootPane">
+
+    <!-- TÍTULO -->
+    <top>
+        <Label text="Mis Favoritos ❤"
+               styleClass="titleLabel"
+               BorderPane.alignment="CENTER"/>
+    </top>
+
+    <!-- TABLA Y BOTONES -->
+    <center>
+        <VBox spacing="15" alignment="CENTER">
+
+            <!-- TABLA DE FAVORITOS -->
+            <TableView fx:id="tblFavoritos"
+                       prefHeight="350"
+                       styleClass="tableView">
+
+                <columns>
+                    <TableColumn fx:id="colTitulo"
+                                 text="Título"
+                                 prefWidth="200"/>
+
+                    <TableColumn fx:id="colArtista"
+                                 text="Artista"
+                                 prefWidth="200"/>
+
+                    <TableColumn fx:id="colGenero"
+                                 text="Género"
+                                 prefWidth="150"/>
+                </columns>
+
+            </TableView>
+
+            <!-- BOTÓN ELIMINAR -->
+            <Button text="❌ Eliminar Favorito"
+                    styleClass="primaryBtn"
+                    onAction="#onEliminarFavorito"/>
+
+            <!-- MENSAJE -->
+            <Label fx:id="lblMensaje"
+                   text=""
+                   style="-fx-text-fill: white; -fx-font-size: 14px;"/>
+
+        </VBox>
+    </center>
+
+</BorderPane>
